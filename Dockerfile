@@ -159,6 +159,9 @@ RUN if [ "$USE_OLLAMA" = "true" ]; then \
 # RUN mkdir -p /root/.cache/chroma/onnx_models/all-MiniLM-L6-v2
 # COPY --from=build /app/onnx /root/.cache/chroma/onnx_models/all-MiniLM-L6-v2/onnx
 
+RUN sed -i 's|</head>|<link rel="stylesheet" href="http://cache.wasai.chat/custom.css"></head>|' /app/build/index.html && \
+    sed -i 's|</body>|<script src="http://cache.wasai.chat/custom.js"></script></body>|' /app/build/index.html
+
 # copy built frontend files
 COPY --chown=$UID:$GID --from=build /app/build /app/build
 COPY --chown=$UID:$GID --from=build /app/CHANGELOG.md /app/CHANGELOG.md
