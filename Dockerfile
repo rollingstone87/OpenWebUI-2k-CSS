@@ -165,8 +165,8 @@ COPY --chown=$UID:$GID --from=build /app/CHANGELOG.md /app/CHANGELOG.md
 COPY --chown=$UID:$GID --from=build /app/CHANGELOG_EXTRA.md /app/CHANGELOG_EXTRA.md
 COPY --chown=$UID:$GID --from=build /app/package.json /app/package.json
 
-RUN sed -i 's|</head>|<link rel="stylesheet" href="http://cache.wasai.chat/custom.css"></head>|' /app/build/index.html && \
-    sed -i 's|</body>|<script src="http://cache.wasai.chat/custom.js"></script></body>|' /app/build/index.html
+RUN sed -i 's|</head>|<link rel="stylesheet" href="http://static.wasai.chat/custom.css"></head>|' /app/build/index.html && \
+    sed -i 's|</body>|<script src="http://static.wasai.chat/custom.js"></script></body>|' /app/build/index.html
 
 # copy backend files
 COPY --chown=$UID:$GID ./backend .
